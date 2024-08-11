@@ -4,6 +4,7 @@ use crate::public_key_credential_rp_entity::PublicKeyCredentialRpEntity;
 use crate::public_key_credential_user_entity::PublicKeyCredentialUserEntity;
 use crate::str_buf::StrBuf;
 use std::fmt;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Default, Clone)]
 pub(crate) struct CredentialManagementData {
@@ -77,7 +78,7 @@ impl fmt::Display for Rp {
 }
 
 #[allow(dead_code)]
-#[derive(Debug, Copy, Clone, Default)]
+#[derive(Debug, Copy, Clone, Default, Serialize, Deserialize)]
 pub enum CredentialProtectionPolicy {
     #[default]
     Unknown,

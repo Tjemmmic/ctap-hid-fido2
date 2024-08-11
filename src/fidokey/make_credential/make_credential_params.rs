@@ -5,11 +5,12 @@ use crate::public_key_credential_descriptor::PublicKeyCredentialDescriptor;
 use crate::public_key_credential_user_entity::PublicKeyCredentialUserEntity;
 use crate::str_buf::StrBuf;
 use std::fmt;
+use serde::{Deserialize, Serialize};
 use strum_macros::{AsRefStr, Display};
 
 /// Attestation Object
 /// [https://www.w3.org/TR/webauthn/#sctn-attestation](https://www.w3.org/TR/webauthn/#sctn-attestation)
-#[derive(Debug, Default, Clone)]
+#[derive(Debug, Default, Clone, Serialize, Deserialize)]
 pub struct Attestation {
     pub fmt: String,
     pub rpid_hash: Vec<u8>,
@@ -62,7 +63,7 @@ impl fmt::Display for Attestation {
     }
 }
 
-#[derive(Debug, Clone, Display, AsRefStr)]
+#[derive(Debug, Clone, Display, AsRefStr, Serialize, Deserialize)]
 pub enum Extension {
     #[strum(serialize = "credBlob")]
     CredBlob((Option<Vec<u8>>, Option<bool>)),

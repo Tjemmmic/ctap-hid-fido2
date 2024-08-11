@@ -2,8 +2,9 @@ use crate::encrypt::cose::CoseKey;
 use crate::util;
 use serde_cbor::Value;
 use std::fmt;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Default, Clone)]
+#[derive(Debug, Default, Clone, Serialize, Deserialize)]
 pub enum PublicKeyType {
     #[default]
     Unknown = 0,
@@ -11,7 +12,7 @@ pub enum PublicKeyType {
     Ed25519 = 2,
 }
 
-#[derive(Debug, Default, Clone)]
+#[derive(Debug, Default, Clone, Serialize, Deserialize)]
 pub struct PublicKey {
     pub key_type: PublicKeyType,
     pub pem: String,

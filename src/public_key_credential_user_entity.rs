@@ -1,8 +1,9 @@
 use crate::util;
 use serde_cbor::Value;
 use std::fmt;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Default, Clone, PartialEq)]
+#[derive(Debug, Default, Clone, PartialEq, Serialize, Deserialize)]
 pub struct PublicKeyCredentialUserEntity {
     pub id: Vec<u8>,
     pub name: String,

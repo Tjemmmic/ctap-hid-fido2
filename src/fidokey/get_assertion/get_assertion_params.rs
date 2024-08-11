@@ -4,10 +4,11 @@ use crate::str_buf::StrBuf;
 use ring::digest;
 use std::convert::TryFrom;
 use std::fmt;
+use serde::{Deserialize, Serialize};
 use strum_macros::AsRefStr;
 
 /// Assertion Object
-#[derive(Debug, Default, Clone)]
+#[derive(Debug, Default, Clone, Serialize, Deserialize)]
 pub struct Assertion {
     pub rpid_hash: Vec<u8>,
     pub flags: Flags,
@@ -45,7 +46,7 @@ impl fmt::Display for Assertion {
     }
 }
 
-#[derive(Debug, Clone, strum_macros::Display, AsRefStr)]
+#[derive(Debug, Clone, strum_macros::Display, AsRefStr, Serialize, Deserialize)]
 pub enum Extension {
     #[strum(serialize = "hmac-secret")]
     HmacSecret(Option<[u8; 32]>),

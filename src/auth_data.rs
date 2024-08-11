@@ -1,8 +1,9 @@
 use crate::str_buf::StrBuf;
 use anyhow::Result;
 use std::fmt;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Default, Clone)]
+#[derive(Debug, Default, Clone, Serialize, Deserialize)]
 pub struct Flags {
     pub user_present_result: bool,
     pub user_verified_result: bool,
